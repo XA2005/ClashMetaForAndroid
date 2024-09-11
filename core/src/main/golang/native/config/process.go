@@ -17,6 +17,7 @@ import (
 )
 
 var processors = []processor{
+	patchExternalController,
 	patchOverride,
 	patchGeneral,
 	patchProfile,
@@ -27,6 +28,15 @@ var processors = []processor{
 }
 
 type processor func(cfg *config.RawConfig, profileDir string) error
+
+func patchExternalController(cfg *config.RawConfig, _ string) error {
+	cfg.ExternalController = ""
+	cfg.ExternalControllerTLS = ""
+	cfg.ExternalControllerUnix = ""
+	cfg.Secret = ""
+
+	return nil
+}
 
 func patchOverride(cfg *config.RawConfig, _ string) error {
 	if err := json.NewDecoder(strings.NewReader(ReadOverride(OverrideSlotPersist))).Decode(cfg); err != nil {

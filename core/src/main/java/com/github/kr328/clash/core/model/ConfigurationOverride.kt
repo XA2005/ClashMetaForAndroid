@@ -42,7 +42,7 @@ data class ConfigurationOverride(
     var ipv6: Boolean? = null,
 
     @SerialName("external-controller")
-    var externalController: String? = "127.0.0.1:0",
+    var externalController: String? = null,
 
     @SerialName("secret")
     var secret: String? = null,
