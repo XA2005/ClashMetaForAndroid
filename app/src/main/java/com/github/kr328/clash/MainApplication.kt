@@ -55,7 +55,14 @@ class MainApplication : Application() {
             }
         }
     }
-
+    
+        val ASNFile = File(clashDir, "ASN.mmdb")
+        if(!ASNFile.exists()) {
+            FileOutputStream(ASNFile).use {
+                assets.open("ASN.mmdb").copyTo(it);
+            }
+        }
+        
     fun finalize() {
         Global.destroy()
     }
