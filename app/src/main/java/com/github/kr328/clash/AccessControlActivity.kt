@@ -116,9 +116,8 @@ class AccessControlActivity : BaseActivity<AccessControlDesign>() {
             packages.asSequence()
                 .filter {
                     it.packageName != packageName
-                }
-                .filter {
-                    it.packageName == "android" || it.requestedPermissions?.contains(INTERNET) == true
+                    || it.packageName == "android" 
+                    || it.requestedPermissions?.contains(INTERNET) == true
                 }
                 .filter {
                     systemApp || !it.isSystemApp
