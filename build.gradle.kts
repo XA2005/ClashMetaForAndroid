@@ -32,13 +32,19 @@ subprojects {
     apply(plugin = if (isApp) "com.android.application" else "com.android.library")
 
     extensions.configure<BaseExtension> {
+        buildFeatures.buildConfig = true
         defaultConfig {
             if (isApp) {
                 applicationId = "com.github.metacubex.clash"
             }
 
+            project.name.let { name ->
+                namespace = if (name == "app") "com.github.kr328.clash"
+                else "com.github.kr328.clash.$name"
+            }
+
             minSdk = 21
-            targetSdk = 31
+            targetSdk = 35
 
             versionName = "2.11.5"
             versionCode = 211005
@@ -160,6 +166,11 @@ subprojects {
                     isUniversalApk = true
                 }
             }
+        }
+
+        compileOptions {
+            sourceCompatibility = JavaVersion.VERSION_21
+            targetCompatibility = JavaVersion.VERSION_21
         }
     }
 }
