@@ -140,7 +140,7 @@ subprojects {
             named("release") {
                 isMinifyEnabled = isApp
                 isShrinkResources = isApp
-                signingConfig = signingConfigs.findByName("release")
+                signingConfig = signingConfigs.findByName("release") ?: signingConfigs["debug"]
                 proguardFiles(
                     getDefaultProguardFile("proguard-android-optimize.txt"),
                     "proguard-rules.pro"
