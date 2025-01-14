@@ -18,11 +18,11 @@ pluginManagement {
 dependencyResolutionManagement {
     versionCatalogs {
         create("libs") {
-            val agp = "7.2.1"
-            val kotlin = "1.7.0"
-            val ksp = "$kotlin-1.0.6"
+            val agp = "8.8.0"
+            val kotlin = "2.1.0"
+            val ksp = "$kotlin-1.0.29"
             val golang = "1.0.4"
-            val coroutine = "1.7.3"
+            val coroutine = "1.10.1"
             val coreKtx = "1.8.0"
             val activity = "1.5.0"
             val fragment = "1.5.0"
